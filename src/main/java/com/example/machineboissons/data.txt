@@ -1,0 +1,7 @@
+Coca;80;5
+Café;50;5
+Thé;60;5
+Soupe;80;5
+Choco;90;5
+Bière;30;5
+Déca;50;10
