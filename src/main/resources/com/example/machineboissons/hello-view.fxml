@@ -9,5 +9,5 @@
     <Label fx:id="labelMachine" layoutX="99.0" layoutY="36.0" text="Liste des boissons"/>
     <Button fx:id="boutonOk" layoutX="99.0" layoutY="200.0" mnemonicParsing="false" text="Ok"/>
     <ComboBox fx:id="cb_Choix" layoutX="99.0" layoutY="94.0" prefWidth="150.0"/>
-    <ComboBox fx:id="cb_images" layoutX="99.0" layoutY="147.0" prefWidth="150.0"/>
+    <ComboBox fx:id="cb_Images" layoutX="99.0" layoutY="147.0" prefWidth="150.0"/>
 </AnchorPane>

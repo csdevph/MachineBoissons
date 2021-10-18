@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.ImageCursor;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.util.Callback;
 
@@ -22,6 +19,8 @@ public class HelloController implements Initializable {
 
     @FXML
     private Label labelMachine;
+    @FXML
+    protected Button boutonOk;
 
     @FXML
     protected ComboBox<Boisson> cb_Choix;
