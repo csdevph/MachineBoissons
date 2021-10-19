@@ -1,22 +1,26 @@
 package com.example.machineboissons;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.ImageCursor;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class HelloController implements Initializable {
     Distributeur machine = new Distributeur();
 
+    @FXML
+    ToggleGroup group5;
     @FXML
     private Label labelMachine;
     @FXML
@@ -28,6 +32,15 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         labelMachine.setText("Choix de boissons");
 
+        group5.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
+                if (group5.getSelectedToggle() != null) {
+                    System.out.println(group5.getSelectedToggle());
+                }
+            }
+        });
+
         try {
             machine.chargerBoissons();
         } catch (IOException e) {
@@ -35,7 +48,14 @@ public class HelloController implements Initializable {
         }
 
         ArrayList<Boisson> boissons = machine.getBoissons();
-        ObservableList<Boisson> olBoissons = FXCollections.observableArrayList(boissons);
+
+        ArrayList<Boisson> boissonStream = (ArrayList<Boisson>) boissons.stream()
+                .filter(b -> b.getTemp().equalsIgnoreCase("froid"))
+                .collect(Collectors.toList());
+
+        System.out.println("Nb boissons " + boissonStream.size());
+
+        ObservableList<Boisson> olBoissons = FXCollections.observableArrayList(boissonStream);
 
         cb_Choix.setItems(olBoissons);
 
@@ -45,8 +65,6 @@ public class HelloController implements Initializable {
                 return new List_Cell_Boisson();
             }
         });
-
-//        cb_Choix.setCellFactory((Callback<ListView<Boisson>, ListCell<Boisson>>) boissonListView -> new List_Cell_Boisson());
 
     }
 }

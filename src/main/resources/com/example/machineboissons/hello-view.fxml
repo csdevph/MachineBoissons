@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.machineboissons.HelloController">
-    <Label fx:id="labelMachine" layoutX="99.0" layoutY="36.0" text="Liste des boissons"/>
-    <Button fx:id="boutonOk" layoutX="99.0" layoutY="200.0" mnemonicParsing="false" text="Ok"/>
-    <ComboBox fx:id="cb_Choix" layoutX="99.0" layoutY="94.0" prefWidth="150.0"/>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.machineboissons.HelloController">
+    <Label fx:id="labelMachine" layoutX="35.0" layoutY="32.0" text="Liste des boissons" />
+    <Button fx:id="boutonOk" layoutX="99.0" layoutY="200.0" mnemonicParsing="false" text="Ok" />
+    <ComboBox fx:id="cb_Choix" layoutX="35.0" layoutY="72.0" prefHeight="25.0" prefWidth="232.0" />
+   <CheckBox layoutX="325.0" layoutY="102.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="96.0" text="Sans alcool" />
+   <Group layoutX="325.0" layoutY="75.0">
+      <children>
+         <RadioButton mnemonicParsing="false" text="Boisson chaude">
+            <toggleGroup>
+               <ToggleGroup fx:id="group5" />
+            </toggleGroup>
+         </RadioButton>
+         <RadioButton layoutX="120.0" mnemonicParsing="false" text="Boisson froide" toggleGroup="$group5" />
+      </children>
+   </Group>
 </AnchorPane>

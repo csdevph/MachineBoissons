@@ -1,7 +1,8 @@
-Coca;80;5;coka.png
-Café;50;5;cafe.png
-Thé;60;5;the.png
-Soupe;80;5;soupe.png
-Choco;90;5;choco.png
-Bière;30;5;biere.png
-Déca;50;10;deca.png
+Coca;80;5;coka.png;froid;false
+Café;50;5;cafe.png;chaud;false
+Thé;60;5;the.png;chaud;false
+Soupe;80;5;soupe.png;chaud;false
+Choco;90;5;choco.png;chaud;false
+Bière;30;5;biere.png;froid;true
+Vin;45;10;abc_text_dark.png;froid;true
+Déca;50;10;deca.png;chaud;false

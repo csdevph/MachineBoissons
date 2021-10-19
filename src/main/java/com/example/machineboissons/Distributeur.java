@@ -31,7 +31,7 @@ public class Distributeur {
         System.out.println("\nListe des boissons :");
         for (int i = 0; i < boissons.size(); i++) {
             b = boissons.get(i);
-            System.out.println(i + 1 + " -> " + b.getNom() + ", " + b.getPrix() + " cents");
+            System.out.println(i + 1 + " -> " + b.getNom() + ", " + b.getPrix() + " cents," + b.getTemp());
         }
     }
 
@@ -41,7 +41,8 @@ public class Distributeur {
         int prix = Integer.parseInt(data[1]);
         int stock = Integer.parseInt(data[2]);
         String imageFile = data[3];
-        boissons.add(new Boisson(nom, prix, stock, imageFile
+        String temp = data[4];
+        boissons.add(new Boisson(nom, prix, stock, imageFile, temp
         ));
     }
 

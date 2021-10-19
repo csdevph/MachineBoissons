@@ -24,7 +24,6 @@ public class List_Cell_Boisson extends ListCell<Boisson> {
     @Override
     protected void updateItem(Boisson boisson, boolean empty) {
         super.updateItem(boisson, empty);
-        System.out.println("updateItem");
         if (empty || boisson == null) {
             setText(null);
             setGraphic(null);
@@ -34,13 +33,12 @@ public class List_Cell_Boisson extends ListCell<Boisson> {
                 mLoader.setController(this);
                 try {
                     mLoader.load();
-                    System.out.println("mLoader");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
             labelNom.setText(boisson.getNom());
-            labelPrix.setText(boisson.getPrix()+"");
+            labelPrix.setText(boisson.getPrix() + "");
             imgView.setImage(boisson.getImage());
             setGraphic(cellPane);
         }
