@@ -11,7 +11,7 @@ public class Distributeur {
         return boissons;
     }
 
-    private ArrayList<Boisson> boissons = new ArrayList<>();
+    private final ArrayList<Boisson> boissons = new ArrayList<>();
 
     private int saisirNumero() {
         Scanner sc = new Scanner(System.in);
@@ -40,7 +40,9 @@ public class Distributeur {
         String nom = data[0];
         int prix = Integer.parseInt(data[1]);
         int stock = Integer.parseInt(data[2]);
-        boissons.add(new Boisson(nom, prix, stock));
+        String imageFile = data[3];
+        boissons.add(new Boisson(nom, prix, stock, imageFile
+        ));
     }
 
     //todo voir Scanner p 197
@@ -54,35 +56,5 @@ public class Distributeur {
             }
             afficherBoissons();
         }
-//        Scanner s = null;
-//        try {
-//            s = new Scanner(new BufferedReader(new FileReader(nomFichier)));
-//            while (s.hasNext()) {
-//                ajouterBoissson(s.next());
-//            }
-//            afficherBoissons();
-//        } finally {
-//            if (s != null) s.close();
-//        }
     }
-
-//    void chargerBoissons0() throws IOException {
-//        String fichier;
-//        fichier = "src\\data.txt";
-//        fichier = "C:\\Users\\phs\\IdeaProjects\\MachineBoissons\\src\\main\\java\\com\\example\\machineboissons";
-//
-//        BufferedReader inStream = null;
-//        try {
-//            inStream = new BufferedReader(new FileReader(fichier));
-//            String l;
-//            while ((l = inStream.readLine()) != null) {
-//                ajouterBoissson(l);
-//            }
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
 }

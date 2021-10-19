@@ -4,12 +4,10 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="cellPane" prefHeight="146.0" prefWidth="397.0" xmlns="http://javafx.com/javafx/11.0.2"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.machineboissons.ControllerCelluleBoisson">
-    <Label fx:id="labelNom" layoutX="26.0" layoutY="28.0" prefHeight="30.0" prefWidth="95.0" text="Nom"/>
-    <Label fx:id="labelPrix" layoutX="26.0" layoutY="91.0" text="Prix"/>
-    <ImageView fx:id="imgView" fitHeight="125.0" fitWidth="200.0" layoutX="169.0" layoutY="16.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@abc_text_light.png"/>
+<AnchorPane fx:id="cellPane" prefHeight="77.0" prefWidth="243.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <Label fx:id="labelNom" layoutX="26.0" layoutY="14.0" prefHeight="30.0" prefWidth="95.0" text="Nom" />
+    <Label fx:id="labelPrix" layoutX="26.0" layoutY="44.0" text="Prix" />
+    <ImageView fx:id="imgView" layoutX="180.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@abc_text_light.png" />
     </ImageView>
 </AnchorPane>

@@ -1,7 +1,7 @@
-Coca;80;5
-Café;50;5
-Thé;60;5
-Soupe;80;5
-Choco;90;5
-Bière;30;5
-Déca;50;10
+Coca;80;5;coka.png
+Café;50;5;cafe.png
+Thé;60;5;the.png
+Soupe;80;5;soupe.png
+Choco;90;5;choco.png
+Bière;30;5;biere.png
+Déca;50;10;deca.png

@@ -21,12 +21,8 @@ public class HelloController implements Initializable {
     private Label labelMachine;
     @FXML
     protected Button boutonOk;
-
     @FXML
-    protected ComboBox<Boisson> cb_Choix;
-
-    @FXML
-    protected ComboBox<Image> cb_Images;
+    protected ComboBox cb_Choix;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,20 +37,16 @@ public class HelloController implements Initializable {
         ArrayList<Boisson> boissons = machine.getBoissons();
         ObservableList<Boisson> olBoissons = FXCollections.observableArrayList(boissons);
 
-        ObservableList<String> ol = FXCollections.observableArrayList("kk", "pp");
-        cb_Choix.setButtonCell(new ListCell<>());
         cb_Choix.setItems(olBoissons);
 
-        Callback<ListView<Boisson>, ListCell<Boisson>> cellFacto = cb_Choix.getCellFactory();
-        System.out.println( cb_Choix.getCellFactory());
+        cb_Choix.setCellFactory(new Callback<ListView<Boisson>, ListCell<Boisson>>() {
+            @Override
+            public ListCell<Boisson> call(ListView<Boisson> boissonListView) {
+                return new List_Cell_Boisson();
+            }
+        });
 
-        /*
-        ObservableList<Image> data = FXCollections.observableArrayList();
-        //data.add(new Image("file:C:\\Users\\phs\\IdeaProjects\\MachineBoissons\\src\\main\\resources\\com\\example\\machineboissons\\abc_text_dark.png"));
-        data.add(new Image("file://abc_text_light.png"));
-        System.out.println(data.size());
-        cb_Images.setItems(data);
+//        cb_Choix.setCellFactory((Callback<ListView<Boisson>, ListCell<Boisson>>) boissonListView -> new List_Cell_Boisson());
 
-         */
     }
 }
