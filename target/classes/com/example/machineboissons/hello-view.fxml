@@ -11,12 +11,12 @@
    <CheckBox layoutX="325.0" layoutY="102.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="96.0" text="Sans alcool" />
    <Group layoutX="325.0" layoutY="75.0">
       <children>
-         <RadioButton mnemonicParsing="false" text="Boisson chaude">
+         <RadioButton mnemonicParsing="false" text="Chaud">
             <toggleGroup>
                <ToggleGroup fx:id="group5" />
             </toggleGroup>
          </RadioButton>
-         <RadioButton layoutX="120.0" mnemonicParsing="false" text="Boisson froide" toggleGroup="$group5" />
+         <RadioButton layoutX="120.0" mnemonicParsing="false" text="Froid" toggleGroup="$group5" />
       </children>
    </Group>
 </AnchorPane>

@@ -14,7 +14,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class HelloController implements Initializable {
     Distributeur machine = new Distributeur();
@@ -32,15 +31,6 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         labelMachine.setText("Choix de boissons");
 
-        group5.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
-                if (group5.getSelectedToggle() != null) {
-                    System.out.println(group5.getSelectedToggle());
-                }
-            }
-        });
-
         try {
             machine.chargerBoissons();
         } catch (IOException e) {
@@ -49,6 +39,7 @@ public class HelloController implements Initializable {
 
         ArrayList<Boisson> boissons = machine.getBoissons();
 
+        // Filtrage
         ArrayList<Boisson> boissonStream = (ArrayList<Boisson>) boissons.stream()
                 .filter(b -> b.getTemp().equalsIgnoreCase("froid"))
                 .collect(Collectors.toList());
@@ -66,5 +57,14 @@ public class HelloController implements Initializable {
             }
         });
 
+        group5.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
+                if (group5.getSelectedToggle() != null) {
+                    RadioButton btn = (RadioButton) t1;
+                    System.out.println(btn.getText());
+                }
+            }
+        });
     }
 }
