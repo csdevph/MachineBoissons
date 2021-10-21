@@ -17,9 +17,17 @@ import java.util.stream.Collectors;
 
 public class HelloController implements Initializable {
     Distributeur machine = new Distributeur();
+    // Filtrage
+    ArrayList<Boisson> boissons;
+    ArrayList<Boisson> boissonStream;
+    ObservableList<Boisson> olBoissons;
 
     @FXML
     ToggleGroup group5;
+    @FXML
+    RadioButton rdChaud;
+    @FXML
+    RadioButton rdFroid;
     @FXML
     private Label labelMachine;
     @FXML
@@ -37,18 +45,8 @@ public class HelloController implements Initializable {
             e.printStackTrace();
         }
 
-        ArrayList<Boisson> boissons = machine.getBoissons();
-
-        // Filtrage
-        ArrayList<Boisson> boissonStream = (ArrayList<Boisson>) boissons.stream()
-                .filter(b -> b.getTemp().equalsIgnoreCase("froid"))
-                .collect(Collectors.toList());
-
-        System.out.println("Nb boissons " + boissonStream.size());
-
-        ObservableList<Boisson> olBoissons = FXCollections.observableArrayList(boissonStream);
-
-        cb_Choix.setItems(olBoissons);
+        boissons = machine.getBoissons();
+//        filtrage("froid");
 
         cb_Choix.setCellFactory(new Callback<ListView<Boisson>, ListCell<Boisson>>() {
             @Override
@@ -62,9 +60,28 @@ public class HelloController implements Initializable {
             public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
                 if (group5.getSelectedToggle() != null) {
                     RadioButton btn = (RadioButton) t1;
-                    System.out.println(btn.getText());
+                    String typeBoisson = btn.getText();
+                    System.out.println(typeBoisson);
+                    filtrage(typeBoisson);
                 }
             }
         });
+
+        rdFroid.setSelected(true);
+    }
+
+    void filtrage(String typeBoisson) {
+        boissonStream = (ArrayList<Boisson>) boissons.stream()
+                .filter(b -> b.getTemp().equalsIgnoreCase(typeBoisson))
+                .collect(Collectors.toList());
+        olBoissons = FXCollections.observableArrayList(boissonStream);
+        cb_Choix.setValue("Votre choix");
+        cb_Choix.setItems(olBoissons);
+
+        // combo box not updating dropdown size upon change : quick trick
+        cb_Choix.show();
+        cb_Choix.hide();
+
+        System.out.println("Nb boissons " + boissonStream.size());
     }
 }
