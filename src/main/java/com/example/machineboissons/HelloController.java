@@ -4,6 +4,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -17,6 +19,8 @@ import java.util.stream.Collectors;
 
 public class HelloController implements Initializable {
     Distributeur machine = new Distributeur();
+    Boisson boissonChoisie;
+
     // Filtrage
     ArrayList<Boisson> boissons;
     ArrayList<Boisson> boissonStream;
@@ -35,9 +39,12 @@ public class HelloController implements Initializable {
     @FXML
     protected ComboBox cb_Choix;
 
+    TextInputDialog txtInDial = new TextInputDialog();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         labelMachine.setText("Choix de boissons");
+        txtInDial.setHeaderText("Votre monnaie");
 
         try {
             machine.chargerBoissons();
@@ -52,6 +59,25 @@ public class HelloController implements Initializable {
             @Override
             public ListCell<Boisson> call(ListView<Boisson> boissonListView) {
                 return new List_Cell_Boisson();
+            }
+        });
+
+        cb_Choix.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Boisson b = (Boisson) cb_Choix.getValue();
+                if (b != null) {
+                    System.out.println(b.getNom());
+                    boutonOk.setText("Payer " + b.getPrix() + " centimes");
+                }
+            }
+        });
+
+        boutonOk.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                txtInDial.setHeaderText(boutonOk.getText());
+                txtInDial.show();
             }
         });
 
@@ -75,7 +101,7 @@ public class HelloController implements Initializable {
                 .filter(b -> b.getTemp().equalsIgnoreCase(typeBoisson))
                 .collect(Collectors.toList());
         olBoissons = FXCollections.observableArrayList(boissonStream);
-        cb_Choix.setValue("Votre choix");
+//        cb_Choix.setValue("Votre choix");
         cb_Choix.setItems(olBoissons);
 
         // combo box not updating dropdown size upon change : quick trick
