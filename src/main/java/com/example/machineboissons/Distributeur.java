@@ -18,7 +18,8 @@ public class Distributeur {
         int stock = Integer.parseInt(data[2]);
         String imageFile = data[3];
         String temp = data[4];
-        boissons.add(new Boisson(nom, prix, stock, imageFile, temp
+        boolean alcool = Boolean.parseBoolean(data[5]);
+        boissons.add(new Boisson(nom, prix, stock, imageFile, temp, alcool
         ));
     }
 

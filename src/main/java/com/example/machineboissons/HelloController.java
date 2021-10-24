@@ -67,7 +67,6 @@ public class HelloController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 Boisson b = (Boisson) cb_Choix.getValue();
                 if (b != null) {
-                    System.out.println(b.getNom());
                     boutonOk.setText("Payer " + b.getPrix() + " centimes");
                 }
             }

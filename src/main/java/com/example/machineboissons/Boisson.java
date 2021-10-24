@@ -7,6 +7,11 @@ public class Boisson implements Gerable {
     private int prix;
     private Image image;
     private int stock;
+    private boolean avecAlcool;
+
+    public boolean isAvecAlcool() {
+        return avecAlcool;
+    }
 
     public String getTemp() {
         return temp;
@@ -35,12 +40,13 @@ public class Boisson implements Gerable {
         return this.getNom() + ", " + getPrix() + " centimes";
     }
 
-    Boisson(String nom, int prix, int stock, String imgFile,String temp) {
+    Boisson(String nom, int prix, int stock, String imgFile, String temp, boolean avecAlcool) {
         this.nom = nom;
         this.prix = prix;
         this.stock = stock;
         this.image = new Image(getClass().getResourceAsStream(imgFile));
-        this.temp=temp;
+        this.temp = temp;
+        this.avecAlcool = avecAlcool;
     }
 
     @Override
